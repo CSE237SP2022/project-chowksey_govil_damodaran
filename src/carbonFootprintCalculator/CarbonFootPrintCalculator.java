@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class CarbonFootPrintCalculator {
 		
-		public double houseEmissions() {
+		public static double houseEmissions(Scanner reader) {
 			
 			double houseEmissions = 0.0;
-			
-			Scanner reader = new Scanner(System.in); 
+
 			
 			System.out.println("How much natural gas does your household use per month in dollars?");
 			
@@ -50,7 +49,6 @@ public class CarbonFootPrintCalculator {
 			
 			double propEmissions = (propDollars/2.47)*12.43*12;
 			
-			reader.close();
 			
 			houseEmissions = natGasEmissions + elecEmissions + fuelOilEmissions + propEmissions;
 			
@@ -58,14 +56,13 @@ public class CarbonFootPrintCalculator {
 			
 		}
 		
-		public double flightEmissions() {
+		public static double flightEmissions(Scanner reader) {
 			
 			//source: https://co2.myclimate.org/en/flight_calculators/new
 			
 			double flightEmissions = 0.0;
 			double classWeight = 1.0;
 			
-			Scanner reader = new Scanner(System.in); 
 			
 			System.out.println("Is the flight short-haul or long-haul? Enter S for short-haul and L for long-haul. This will largely determine the total flight carbon emission.");
 			
@@ -75,17 +72,21 @@ public class CarbonFootPrintCalculator {
 		
 			String cabinClass = reader.nextLine();
 			
+			System.out.println("Enter your flight distance in kilometers.");
+			
+			double flightDistance = reader.nextDouble();
+			
 			if (cabinClass.equals("E")) {
 				
 				classWeight = 0.96;
 			}
 			
-			if (cabinClass.equals("B")) {
+			else if (cabinClass.equals("B")) {
 				
 				classWeight = 1.26;
 			}
 			
-			if (cabinClass.equals("F")) {
+			else if (cabinClass.equals("F")) {
 				
 				classWeight = 2.40;
 			}
@@ -102,10 +103,10 @@ public class CarbonFootPrintCalculator {
 				double aircraftFactor = 0.00038;
 				double airportInfrastructure = 11.68;
 				
-				flightEmissions = (cargoFactorInverse)*(classWeight)*(emissionFactor*multiplier+preproduction)+aircraftFactor+airportInfrastructure;
+				flightEmissions = flightDistance*(cargoFactorInverse)*(classWeight)*(emissionFactor*multiplier+preproduction)+aircraftFactor+airportInfrastructure;
 			}
 			
-			if (flightType.equals("R")) {
+			else if (flightType.equals("L")) {
 				
 				double cargoFactorInverse = 0.74;
 				double averageSeatNumber = 280.21;
@@ -117,7 +118,7 @@ public class CarbonFootPrintCalculator {
 				double aircraftFactor = 0.00038;
 				double airportInfrastructure = 11.68;
 				
-				flightEmissions = (cargoFactorInverse)*(classWeight)*(emissionFactor*multiplier+preproduction)+aircraftFactor+airportInfrastructure;
+				flightEmissions = flightDistance*(cargoFactorInverse)*(classWeight)*(emissionFactor*multiplier+preproduction)+aircraftFactor+airportInfrastructure;
 				
 			}
 			
@@ -126,7 +127,6 @@ public class CarbonFootPrintCalculator {
 				System.out.println("Invalid input, please try running the program again.");
 			}
 			
-			reader.close();
 			
 			return flightEmissions;
 		}
@@ -143,6 +143,28 @@ public class CarbonFootPrintCalculator {
 			reader.close();
 			
 			return 0;
+		}
+		
+		public static void main(String[] args) {
+			System.out.println("Welcome to our carbon footprint calculator! Answer a series of questions and you should be able to figure out what your carbon footprint is.");
+			
+			
+			Scanner reader = new Scanner(System.in); 
+			
+			System.out.println("First we will ask you about your flight travel.");
+			double fe = flightEmissions(reader);
+			System.out.println("Now we will ask you about your house energy usage.");
+			double he = houseEmissions(reader);
+			System.out.print("Your total house emissions is: ");
+			System.out.print(he);
+			System.out.print(" pounds of carbon dioxide per year");
+			System.out.println();
+			System.out.print("Your total emissions from flight is: ");
+			System.out.print(fe);
+			System.out.print(" pounds of carbon dioxide per year");
+			System.out.println();
+			System.out.println("Coming soon, questions about your waste and car travel usage.");
+			reader.close();
 		}
 	
 }
