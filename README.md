@@ -21,5 +21,5 @@ Our project is a carbon footprint calculator aimed to help college students redu
 - Second, navigate to the CarbonFootPrintCalculator.java file on your local machine
 - Finally run the following
 
-  javac CarbonFootPrintCalculator.java
-  java CarbonFootPrintCalculator.java
+  javac CarbonFootPrintCalculator.java (first)
+  java CarbonFootPrintCalculator.java  (second)
