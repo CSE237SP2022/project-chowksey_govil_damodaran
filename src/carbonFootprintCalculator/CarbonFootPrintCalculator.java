@@ -4,8 +4,12 @@ import java.util.Scanner;
 
 public class CarbonFootPrintCalculator {
 	
+	WasteEmissionsCalculator wec;
+	Scanner reader;
+	
 	public CarbonFootPrintCalculator(){
-		
+		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
+		reader = new Scanner(System.in);
 	}
 		
 	public double houseEmissions(Scanner reader) {
@@ -148,66 +152,19 @@ public class CarbonFootPrintCalculator {
 		return 0;
 	}
 	
-	public double wasteEmissions(Scanner reader) {		
-		double wasteEmissions =  692;
-		
-		System.out.println("We assume that you produce 692 pounds of CO2 per year of waste based on EPA data. Now we will ask you a series of questions about your recycling habits.");
-		
-		
-		int cans = askRecyclingQuestion("cans", reader);	
-		wasteEmissions = reduceIfRecycled(cans, 89.38, wasteEmissions);
-
-		
-		int plastic = askRecyclingQuestion("plastic", reader);
-		wasteEmissions = reduceIfRecycled(plastic, 89.38, wasteEmissions);
-		
-		
-		int glass = askRecyclingQuestion("glass", reader);
-		wasteEmissions = reduceIfRecycled(glass, 89.38, wasteEmissions);
-		
-
-		int news = askRecyclingQuestion("news", reader);
-		wasteEmissions = reduceIfRecycled(news, 89.38, wasteEmissions);
-		
-		int magazines = askRecyclingQuestion("magazines", reader);
-		wasteEmissions = reduceIfRecycled(magazines, 89.38, wasteEmissions);
-		
-		return wasteEmissions;
-	}
-	
-	public int askRecyclingQuestion(String recycledObject, Scanner reader) {
-		System.out.print(String.format("Do you recycle %s? Type 1 for yes or 2 for no", recycledObject));
-		int choice = reader.nextInt();
-		
-		while(!(choice == 1 || choice == 2)) {
-			System.out.println("Please type 1 for yes or 2 for no");
-			choice = reader.nextInt();
-		}
-		
-		return choice;
-	}
-	
-	public double reduceIfRecycled(int choice, double amount, double currentTotal) {
-		if(choice == 1) {
-			currentTotal = currentTotal - amount;
-		}
-		return currentTotal;
-	}
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to our carbon footprint calculator! Answer a series of questions and you should be able to figure out what your carbon footprint is.");
 		
 		
-		Scanner reader = new Scanner(System.in);
-		
 		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
 		
 		System.out.println("First we will ask you about your flight travel.");
-		double fe = cpc.flightEmissions(reader);
+		double fe = cpc.flightEmissions(cpc.reader);
 		System.out.println("Now we will ask you about your house energy usage.");
-		double he = cpc.houseEmissions(reader);
+		double he = cpc.houseEmissions(cpc.reader);
 		System.out.println("Now we will ask you about your waste habits.");
-		double we = cpc.wasteEmissions(reader);
+		double we = cpc.wec.wasteEmissions(cpc.reader);
 		System.out.print("Your total house emissions is: ");
 		System.out.print(he);
 		System.out.print(" pounds of carbon dioxide per year");
@@ -219,7 +176,7 @@ public class CarbonFootPrintCalculator {
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
 		System.out.println("Coming soon, questions about your waste and car travel usage.");
-		reader.close();
+		cpc.reader.close();
 	}
 
 }
