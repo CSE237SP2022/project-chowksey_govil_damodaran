@@ -5,10 +5,14 @@ import java.util.Scanner;
 public class CarbonFootPrintCalculator {
 	
 	WasteEmissionsCalculator wec;
+	FlightEmissionsCalculator fec;
 	Scanner reader;
 	
 	public CarbonFootPrintCalculator(){
 		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
+		reader = new Scanner(System.in);
+		
+		FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
 		reader = new Scanner(System.in);
 	}
 		
@@ -160,7 +164,7 @@ public class CarbonFootPrintCalculator {
 		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
 		
 		System.out.println("First we will ask you about your flight travel.");
-		double fe = cpc.flightEmissions(cpc.reader);
+		double fe = cpc.fec.flightEmissions();
 		System.out.println("Now we will ask you about your house energy usage.");
 		double he = cpc.houseEmissions(cpc.reader);
 		System.out.println("Now we will ask you about your waste habits.");
