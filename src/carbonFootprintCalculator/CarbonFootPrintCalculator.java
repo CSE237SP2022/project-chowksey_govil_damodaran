@@ -6,11 +6,16 @@ public class CarbonFootPrintCalculator {
 	
 	WasteEmissionsCalculator wec;
 	FlightEmissionsCalculator fec;
+	HouseEmissionsCalculator hec;
+	CarEmissionsCalculator cec;
+
 	Scanner reader;
 	
 	public CarbonFootPrintCalculator(){
 		
 		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
+		HouseEmissionsCalculator hec = new HouseEmissionsCalculator();
+		CarEmissionsCalculator cec = new CarEmissionsCalculator();
 		reader = new Scanner(System.in);
 		
 		FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
@@ -18,56 +23,6 @@ public class CarbonFootPrintCalculator {
 		
 	}
 		
-	public double houseEmissions(Scanner reader) {
-		
-		double houseEmissions = 0.0;
-
-		System.out.println("How much natural gas does your household use per month in dollars?");
-		
-		double natGasDollars = reader.nextDouble();
-		
-		
-		double natGasEmissions = (natGasDollars/10.68)*119.58*12;
-		
-		System.out.println("Does your household purchase green power? Enter 1 for yes and 2 for no:");
-		
-		int greenPower = reader.nextInt();
-		
-		
-		System.out.println("How much electricity does your household use per month in dollars?");
-		
-		double elecDollars = reader.nextDouble();
-		
-		double elecEmissions = 0.0;
-		
-		if(greenPower == 2) {
-			// the e_factor is for 63112 missouri zip code
-			elecEmissions = (elecDollars/0.1188)*1.820425*12;
-		}
-		else {
-			System.out.println("What portion of your household's total purchased electricity use is green power? Enter a number between 0 and 100");
-			double greenPortion = reader.nextDouble();
-			elecEmissions = elecEmissions * (1-greenPortion);
-		}
-		
-		System.out.println("How much fuel oil does your household use per month in dollars?");
-		
-		double fuelOilDollars = reader.nextDouble();
-		
-		double fuelOilEmissions = (fuelOilDollars/4.02)*22.61*12;
-		
-		System.out.println("How much propane does your household use per month in dollars?");
-		
-		double propDollars = reader.nextDouble();
-		
-		double propEmissions = (propDollars/2.47)*12.43*12;
-		
-		
-		houseEmissions = natGasEmissions + elecEmissions + fuelOilEmissions + propEmissions;
-		
-		return houseEmissions;
-		
-	}
 	
 	public double flightEmissions(Scanner reader) {
 		
@@ -162,10 +117,10 @@ public class CarbonFootPrintCalculator {
 	public static void main(String[] args) {
 		System.out.println("Welcome to our carbon footprint calculator! Answer a series of questions and you should be able to figure out what your carbon footprint is.");
 		
-		
 		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
 		
 		System.out.println("First we will ask you about your flight travel.");
+
 		double fe = cpc.fec.flightEmissions();
 		System.out.println("Now we will ask you about your house energy usage.");
 		double he = cpc.houseEmissions(cpc.reader);
@@ -181,7 +136,11 @@ public class CarbonFootPrintCalculator {
 		System.out.print(we);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
-		System.out.println("Coming soon, questions about your waste and car travel usage.");
+		System.out.println("Now we will ask you about your car emissions.");
+		double ce = cpc.cec.carEmissions();
+		System.out.print("Your total emissions from car usage is: ");
+		System.out.print(ce);
+		System.out.print(" pounds of carbon dioxide per year");
 		cpc.reader.close();
 	}
 
