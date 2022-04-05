@@ -6,11 +6,13 @@ public class CarbonFootPrintCalculator {
 	
 	WasteEmissionsCalculator wec;
 	HouseEmissionsCalculator hec;
+	CarEmissionsCalculator cec;
 	Scanner reader;
 	
 	public CarbonFootPrintCalculator(){
 		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
 		HouseEmissionsCalculator hec = new HouseEmissionsCalculator();
+		CarEmissionsCalculator cec = new CarEmissionsCalculator();
 		reader = new Scanner(System.in);
 	}
 		
@@ -126,7 +128,11 @@ public class CarbonFootPrintCalculator {
 		System.out.print(we);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
-		System.out.println("Coming soon, questions about your waste and car travel usage.");
+		System.out.println("Now we will ask you about your car emissions.");
+		double ce = cpc.cec.carEmissions();
+		System.out.print("Your total emissions from car usage is: ");
+		System.out.print(ce);
+		System.out.print(" pounds of carbon dioxide per year");
 		cpc.reader.close();
 	}
 
