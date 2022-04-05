@@ -14,6 +14,7 @@ public class CarbonFootPrintCalculator {
 		
 		FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
 		reader = new Scanner(System.in);
+		
 	}
 		
 	public double houseEmissions(Scanner reader) {

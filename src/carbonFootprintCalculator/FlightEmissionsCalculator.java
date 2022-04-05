@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class FlightEmissionsCalculator {
 
 	Scanner flightReader;
+	
 	double passengerLoadFactor = 0.82;
 	double detourConstant = 95.0;
 	double emissionFactor = 3.15;
