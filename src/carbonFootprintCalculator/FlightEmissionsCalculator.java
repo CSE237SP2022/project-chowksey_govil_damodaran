@@ -14,6 +14,7 @@ public class FlightEmissionsCalculator {
 	double multiplier = 2.0;
 	double aircraftFactor = 0.00038;
 	double airportInfrastructure = 11.68;
+	
 	//using general averages
 	double cargoFactorInverse = 0.835;
 	double averageSeatNumber = 216.86;

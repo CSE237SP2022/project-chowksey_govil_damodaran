@@ -9,6 +9,7 @@ public class CarbonFootPrintCalculator {
 	Scanner reader;
 	
 	public CarbonFootPrintCalculator(){
+		
 		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
 		reader = new Scanner(System.in);
 		
