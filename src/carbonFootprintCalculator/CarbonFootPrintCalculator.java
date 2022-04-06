@@ -16,8 +16,6 @@ public class CarbonFootPrintCalculator {
 		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
 		HouseEmissionsCalculator hec = new HouseEmissionsCalculator();
 		CarEmissionsCalculator cec = new CarEmissionsCalculator();
-		reader = new Scanner(System.in);
-		
 		FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
 		reader = new Scanner(System.in);
 		
@@ -123,7 +121,7 @@ public class CarbonFootPrintCalculator {
 
 		double fe = cpc.fec.flightEmissions();
 		System.out.println("Now we will ask you about your house energy usage.");
-		double he = cpc.houseEmissions(cpc.reader);
+		double he = cpc.hec.houseEmissions();
 		double we = cpc.wec.wasteEmissions();
 		System.out.print("Your total house emissions is: ");
 		System.out.print(he);
