@@ -4,39 +4,43 @@ import java.util.Scanner;
 
 public class WasteEmissionsCalculator {
 	
+	Scanner reader;
+	
 	public WasteEmissionsCalculator() {
-		
+		reader = new Scanner(System.in);
 	}
 
-	public double wasteEmissions(Scanner reader) {		
+	public double wasteEmissions() {
+		
+		System.out.println("Now we will ask you about your waste habits.");
 		double wasteEmissions =  692;
 		
 		System.out.println("We assume that you produce 692 pounds of CO2 per year of waste based on EPA data. Now we will ask you a series of questions about your recycling habits.");
 		
 		
-		int cans = askRecyclingQuestion("cans", reader);	
+		int cans = askRecyclingQuestion("cans");	
 		wasteEmissions = reduceIfRecycled(cans, 89.38, wasteEmissions);
 
 		
-		int plastic = askRecyclingQuestion("plastic", reader);
+		int plastic = askRecyclingQuestion("plastic");
 		wasteEmissions = reduceIfRecycled(plastic, 89.38, wasteEmissions);
 		
 		
-		int glass = askRecyclingQuestion("glass", reader);
+		int glass = askRecyclingQuestion("glass");
 		wasteEmissions = reduceIfRecycled(glass, 89.38, wasteEmissions);
 		
 
-		int news = askRecyclingQuestion("news", reader);
+		int news = askRecyclingQuestion("news");
 		wasteEmissions = reduceIfRecycled(news, 89.38, wasteEmissions);
 		
-		int magazines = askRecyclingQuestion("magazines", reader);
+		int magazines = askRecyclingQuestion("magazines");
 		wasteEmissions = reduceIfRecycled(magazines, 89.38, wasteEmissions);
 		
 		return wasteEmissions;
 	}
 	
 	
-	public int askRecyclingQuestion(String recycledObject, Scanner reader) {
+	private int askRecyclingQuestion(String recycledObject) {
 		System.out.print(String.format("Do you recycle %s? Type 1 for yes or 2 for no", recycledObject));
 		int choice = reader.nextInt();
 		
@@ -48,7 +52,7 @@ public class WasteEmissionsCalculator {
 		return choice;
 	}
 	
-	public double reduceIfRecycled(int choice, double amount, double currentTotal) {
+	private double reduceIfRecycled(int choice, double amount, double currentTotal) {
 		if(choice == 1) {
 			currentTotal = currentTotal - amount;
 		}

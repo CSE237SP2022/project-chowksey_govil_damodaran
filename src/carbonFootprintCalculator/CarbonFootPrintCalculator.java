@@ -124,8 +124,7 @@ public class CarbonFootPrintCalculator {
 		double fe = cpc.fec.flightEmissions();
 		System.out.println("Now we will ask you about your house energy usage.");
 		double he = cpc.houseEmissions(cpc.reader);
-		System.out.println("Now we will ask you about your waste habits.");
-		double we = cpc.wec.wasteEmissions(cpc.reader);
+		double we = cpc.wec.wasteEmissions();
 		System.out.print("Your total house emissions is: ");
 		System.out.print(he);
 		System.out.print(" pounds of carbon dioxide per year");
