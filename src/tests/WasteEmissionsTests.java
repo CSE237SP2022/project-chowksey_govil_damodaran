@@ -1,5 +1,7 @@
-package carbonFootprintCalculator;
+package tests;
 import org.junit.jupiter.api.Test;
+
+import carbonFootprintCalculator.CarbonFootPrintCalculator;
 
 public class WasteEmissionsTests {
 	
