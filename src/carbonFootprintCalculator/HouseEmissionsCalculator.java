@@ -18,13 +18,12 @@ public class HouseEmissionsCalculator {
 		double natGasEmissionValue = natGasEmissions();
 		
 		double elecEmissionValue = elecEmissions();
-		
+
 		double fuelOilEmissionValue = fuelOilEmissions();
-		
+
 		double propEmissionValue = propEmissions();
-		
+
 		houseEmissions = natGasEmissionValue + elecEmissionValue + fuelOilEmissionValue + propEmissionValue;
-		
 		return houseEmissions;
 		
 	}
@@ -58,14 +57,13 @@ public class HouseEmissionsCalculator {
 		
 		double elecEmissions = 0.0;
 		
-		if(greenPower == 2) {
-			// the e_factor is for 63112 missouri zip code
-			elecEmissions = (elecDollars/0.1188)*1.820425*12;
-		}
-		else {
+		// the e_factor is for 63112 missouri zip code
+		elecEmissions = (elecDollars/0.1188)*1.820425*12;
+		
+		if(greenPower == 1) {
 			System.out.println("What portion of your household's total purchased electricity use is green power? Enter a number between 0 and 100");
 			double greenPortion = reader.nextDouble();
-			elecEmissions = elecEmissions * (1-greenPortion);
+			elecEmissions = elecEmissions * (100-greenPortion)/100;
 		}
 		
 		return elecEmissions;
