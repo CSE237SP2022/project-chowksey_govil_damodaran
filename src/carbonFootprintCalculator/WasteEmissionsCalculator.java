@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class WasteEmissionsCalculator {
 	
 	Scanner reader;
-	FileWriter writer;
+	FileWriterAndReader writer;
 	
 	public WasteEmissionsCalculator() {
 		reader = new Scanner(System.in);
-		writer = new FileWriter();
+		writer = new FileWriterAndReader();
 	}
 
 	public double wasteEmissions() {
@@ -40,7 +40,7 @@ public class WasteEmissionsCalculator {
 		wasteEmissions = reduceIfRecycled(magazines, 27.46, wasteEmissions);
 		
 		HashMap<String, Double> emissions = new HashMap<String, Double>();
-		emissions.put("wastEmissions", wasteEmissions);
+		emissions.put("wasteEmissions", wasteEmissions);
 		writer.appendToFile(emissions, "src/carbonFootprintCalculator/calculatorResults.txt");
 		
 		return wasteEmissions;

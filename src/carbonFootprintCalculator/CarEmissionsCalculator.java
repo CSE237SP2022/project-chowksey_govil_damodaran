@@ -1,15 +1,18 @@
 package carbonFootprintCalculator;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class CarEmissionsCalculator {
 
 	Scanner carReader;
+	FileWriterAndReader writer;
 	double weeksInAYear = 52.0;
 	
 	public CarEmissionsCalculator() {
 		
 		carReader = new Scanner(System.in);
+		writer = new FileWriterAndReader();
 	}
 		
 	public double carEmissions() {
@@ -24,6 +27,10 @@ public class CarEmissionsCalculator {
 		
 		carEmissions = numCars*((averageDrivingMiles*weeksInAYear)/(averageFuelEconomy*averageCarbonFuelEmissions));
 	
+		HashMap<String, Double> emissions = new HashMap<String, Double>();
+		emissions.put("carEmissions", carEmissions);
+		writer.appendToFile(emissions, "src/carbonFootprintCalculator/calculatorResults.txt");
+		
 		return carEmissions;
 	}
 	

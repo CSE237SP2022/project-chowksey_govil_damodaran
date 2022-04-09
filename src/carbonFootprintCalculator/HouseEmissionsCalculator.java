@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class HouseEmissionsCalculator {
 	
 	Scanner reader;
-	FileWriter writer;
+	FileWriterAndReader writer;
 	
 	public HouseEmissionsCalculator() {
 		reader = new Scanner(System.in);
-		writer = new FileWriter();
+		writer = new FileWriterAndReader();
 	}
 	
 	public double houseEmissions() {

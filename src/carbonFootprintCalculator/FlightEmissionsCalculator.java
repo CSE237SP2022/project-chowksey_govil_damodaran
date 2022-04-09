@@ -1,11 +1,13 @@
 package carbonFootprintCalculator;
 
+import java.util.HashMap;
 import java.util.Scanner;
 //source: https://co2.myclimate.org/en/flight_calculators/new
 
 public class FlightEmissionsCalculator {
 
 	Scanner flightReader;
+	FileWriterAndReader writer;
 	
 	double passengerLoadFactor = 0.82;
 	double detourConstant = 95.0;
@@ -22,6 +24,7 @@ public class FlightEmissionsCalculator {
 	public FlightEmissionsCalculator() {
 		
 		flightReader = new Scanner(System.in);
+		writer = new FileWriterAndReader();
 	}
 	
 	public double flightEmissions() {
@@ -36,6 +39,10 @@ public class FlightEmissionsCalculator {
 
 		
 		totalFlightEmissions = nonLinearModelContribution/(classWeightContribution*nonClassWeightMContribution+nonClassWeightAContribution);
+		
+		HashMap<String, Double> emissions = new HashMap<String, Double>();
+		emissions.put("flightEmissions", totalFlightEmissions);
+		writer.appendToFile(emissions, "src/carbonFootprintCalculator/calculatorResults.txt");
 		
 		return totalFlightEmissions;
 	}

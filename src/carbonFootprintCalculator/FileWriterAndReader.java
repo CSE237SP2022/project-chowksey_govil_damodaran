@@ -5,11 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Scanner;
 
-public class FileWriter {
+public class FileWriterAndReader {
 	
 	
-	public FileWriter() {
+	public FileWriterAndReader() {
 		
 	}
 	
@@ -29,8 +30,8 @@ public class FileWriter {
 		}
 	}
 
-	public void appendToFile(HashMap<String, Double> emissions, String fileName) {
-		File fileToAdd = new File(fileName);
+	public void appendToFile(HashMap<String, Double> emissions, String filePath) {
+		File fileToAdd = new File(filePath);
 		try {
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileToAdd,true));
@@ -44,7 +45,30 @@ public class FileWriter {
 			
 			e.printStackTrace();
 		}
+	}
+	
+	public HashMap<String,Double> readFile(String filePath) {
+		HashMap<String, Double> emissions = new HashMap<String, Double>();
 		
+		File file = new File(filePath);
+		
+		try {
+			Scanner fileIn = new Scanner(file);
+			while(fileIn.hasNextLine()) {
+				String line = fileIn.nextLine();
+				int spaceIndex = line.indexOf(" ");
+				String typeOfEmission = line.substring(0, spaceIndex);
+				String amount = line.substring(spaceIndex+1, line.length());
+				double amountD = Double.parseDouble(amount);
+				
+				emissions.put(typeOfEmission, amountD);
+			}
+			fileIn.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return emissions;
 	}
 
 }
