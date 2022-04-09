@@ -1,29 +1,42 @@
 package carbonFootprintCalculator;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class HouseEmissionsCalculator {
 	
 	Scanner reader;
+	FileWriter writer;
 	
 	public HouseEmissionsCalculator() {
 		reader = new Scanner(System.in);
+		writer = new FileWriter();
 	}
 	
 	public double houseEmissions() {
 		System.out.println("Now we will ask you about your house energy usage.");
 		
 		double houseEmissions = 0.0;
+		HashMap<String, Double> emissions = new HashMap<String, Double>();
 		
 		double natGasEmissionValue = natGasEmissions();
+		emissions.put("natGasEmissions", natGasEmissionValue);
 		
 		double elecEmissionValue = elecEmissions();
+		emissions.put("elecGasEmissions", elecEmissionValue);
 
 		double fuelOilEmissionValue = fuelOilEmissions();
+		emissions.put("fuelOilEmissions", fuelOilEmissionValue);
 
 		double propEmissionValue = propEmissions();
+		emissions.put("propEmissions", propEmissionValue);
 
 		houseEmissions = natGasEmissionValue + elecEmissionValue + fuelOilEmissionValue + propEmissionValue;
+		emissions.put("houseEmissions", houseEmissions);
+		
+		
+		writer.writeToFile(emissions, "src/carbonFootprintCalculator/calculatorResults.txt");
+		
 		return houseEmissions;
 		
 	}
