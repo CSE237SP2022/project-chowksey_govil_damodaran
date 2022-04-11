@@ -21,33 +21,38 @@ public class CarbonFootPrintCalculator {
 		
 	}
 	
-	public static void main(String[] args) {
+	public void runCalculator() {
 		System.out.println("Welcome to our carbon footprint calculator! Answer a series of questions and you should be able to figure out what your carbon footprint is.");
-		
-		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
-		
+		double he = hec.houseEmissions();
 		System.out.println("First we will ask you about your flight travel.");
-
-		double fe = cpc.fec.flightEmissions();
-		double he = cpc.hec.houseEmissions();
-		double we = cpc.wec.wasteEmissions();
+		double fe = fec.flightEmissions();
+		double we = wec.wasteEmissions();
 		System.out.println("Now we will ask you about your car emissions.");
-		double ce = cpc.cec.carEmissions();
+		double ce = cec.carEmissions();
 		System.out.print("Your total house emissions is: ");
-		System.out.print(he);
+		System.out.println(he);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
 		System.out.print("Your total emissions from flight is: ");
-		System.out.print(fe);
-		System.out.print("Your total emissions from waste is: ");
-		System.out.print(we);
+		System.out.println(fe);
+		System.out.println("Your total emissions from waste is: ");
+		System.out.println(we);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
 		
-		System.out.print("Your total emissions from car usage is: ");
+		System.out.println("Your total emissions from car usage is: ");
 		System.out.print(ce);
 		System.out.print(" pounds of carbon dioxide per year");
-		cpc.reader.close();
+		reader.close();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
+		cpc.runCalculator();
+		
+		
 	}
 
 }

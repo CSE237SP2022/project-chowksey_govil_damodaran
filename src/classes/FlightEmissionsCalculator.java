@@ -36,14 +36,12 @@ public class FlightEmissionsCalculator {
 		double classWeightContribution = FlightClassWeightContribution();
 		double nonClassWeightMContribution = NonClassWeightMultiplicationContribution();
 		double nonClassWeightAContribution = NonClassWeightAdditionContribution();
-		System.out.println("here");
 		
 		totalFlightEmissions = nonLinearModelContribution/(classWeightContribution*nonClassWeightMContribution+nonClassWeightAContribution);
 		
 		HashMap<String, Double> emissions = new HashMap<String, Double>();
 		emissions.put("flightEmissions", totalFlightEmissions);
 		writer.appendToFile(emissions, "src/classes/calculatorResults.txt");
-		System.out.println("here2");
 		return totalFlightEmissions;
 	}
 	
@@ -108,6 +106,7 @@ public class FlightEmissionsCalculator {
 		
 		double classWeight = 0.0;
 		System.out.println("Enter your cabin class type: economy (enter E), business (enter B), or first class (enter F).");
+		flightReader.nextLine();
 		String cabinClass = flightReader.nextLine();
 		
 		if (cabinClass.equals("E")) {
