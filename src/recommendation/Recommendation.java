@@ -7,9 +7,11 @@ import carbonFootprintCalculator.CarbonFootPrintCalculator;
 public class Recommendation {
 	
 	Scanner reader;
+	CarbonFootprintPledgeSection pledgeVariable;
 	
 	public Recommendation() {
 		
+		pledgeVariable = new CarbonFootprintPledgeSection();
 	}
 	
 	public static void main(String[] args) {
@@ -17,7 +19,8 @@ public class Recommendation {
 		System.out.println("(1) - Recommendations based on your carbon footprint. Note: Please have completed the Carbon Footprint Calculator first");
 		System.out.println("(2) - Take some pledges to reduce your carbon footprint");
 		
-		
+		Recommendation p = new Recommendation();
+		p.pledgeVariable.mainPledgeMethod();
 		
 	}
 
