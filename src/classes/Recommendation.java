@@ -1,17 +1,18 @@
-package recommendation;
+package classes;
 
+import java.util.HashMap;
 import java.util.Scanner;
-
-import carbonFootprintCalculator.CarbonFootPrintCalculator;
 
 public class Recommendation {
 	
 	Scanner reader;
 	CarbonFootprintPledgeSection pledgeVariable;
+	CarbonFootprintCalculatorRecommendations calcRecs;
 	
 	public Recommendation() {
 		
 		pledgeVariable = new CarbonFootprintPledgeSection();
+		calcRecs = new CarbonFootprintCalculatorRecommendations();
 	}
 	
 	public static void main(String[] args) {
@@ -21,6 +22,10 @@ public class Recommendation {
 		
 		Recommendation p = new Recommendation();
 		p.pledgeVariable.mainPledgeMethod();
+		Recommendation r = new Recommendation();
+		
+		r.calcRecs.getRecommendation();
+		
 		
 	}
 

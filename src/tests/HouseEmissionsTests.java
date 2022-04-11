@@ -11,7 +11,7 @@ import java.util.Scanner;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 
-import carbonFootprintCalculator.HouseEmissionsCalculator;
+import classes.HouseEmissionsCalculator;
 
 class HouseEmissionsTests {
 

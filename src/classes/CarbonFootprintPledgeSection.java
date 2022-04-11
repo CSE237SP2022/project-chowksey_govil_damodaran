@@ -1,4 +1,4 @@
-package recommendation;
+package classes;
 
 import java.util.Scanner;
 

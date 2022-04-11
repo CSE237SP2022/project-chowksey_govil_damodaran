@@ -1,4 +1,4 @@
-package carbonFootprintCalculator;
+package classes;
 
 import java.util.Scanner;
 
@@ -13,10 +13,10 @@ public class CarbonFootPrintCalculator {
 	
 	public CarbonFootPrintCalculator(){
 		
-		WasteEmissionsCalculator wec = new WasteEmissionsCalculator();
-		HouseEmissionsCalculator hec = new HouseEmissionsCalculator();
-		CarEmissionsCalculator cec = new CarEmissionsCalculator();
-		FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
+		wec = new WasteEmissionsCalculator();
+		hec = new HouseEmissionsCalculator();
+		cec = new CarEmissionsCalculator();
+		fec = new FlightEmissionsCalculator();
 		reader = new Scanner(System.in);
 		
 	}
@@ -29,9 +29,10 @@ public class CarbonFootPrintCalculator {
 		System.out.println("First we will ask you about your flight travel.");
 
 		double fe = cpc.fec.flightEmissions();
-		System.out.println("Now we will ask you about your house energy usage.");
 		double he = cpc.hec.houseEmissions();
 		double we = cpc.wec.wasteEmissions();
+		System.out.println("Now we will ask you about your car emissions.");
+		double ce = cpc.cec.carEmissions();
 		System.out.print("Your total house emissions is: ");
 		System.out.print(he);
 		System.out.print(" pounds of carbon dioxide per year");
@@ -42,8 +43,7 @@ public class CarbonFootPrintCalculator {
 		System.out.print(we);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
-		System.out.println("Now we will ask you about your car emissions.");
-		double ce = cpc.cec.carEmissions();
+		
 		System.out.print("Your total emissions from car usage is: ");
 		System.out.print(ce);
 		System.out.print(" pounds of carbon dioxide per year");

@@ -6,8 +6,8 @@ import java.io.ByteArrayInputStream;
 
 import org.junit.jupiter.api.Test;
 
-import carbonFootprintCalculator.CarbonFootPrintCalculator;
-import carbonFootprintCalculator.WasteEmissionsCalculator;
+import classes.CarbonFootPrintCalculator;
+import classes.WasteEmissionsCalculator;
 
 class WasteEmissionsTests {
 

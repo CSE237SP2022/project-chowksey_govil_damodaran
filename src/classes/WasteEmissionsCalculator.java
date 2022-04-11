@@ -1,13 +1,16 @@
-package carbonFootprintCalculator;
+package classes;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class WasteEmissionsCalculator {
 	
 	Scanner reader;
+	FileWriterAndReader writer;
 	
 	public WasteEmissionsCalculator() {
 		reader = new Scanner(System.in);
+		writer = new FileWriterAndReader();
 	}
 
 	public double wasteEmissions() {
@@ -35,6 +38,10 @@ public class WasteEmissionsCalculator {
 		
 		int magazines = askRecyclingQuestion("magazines");
 		wasteEmissions = reduceIfRecycled(magazines, 27.46, wasteEmissions);
+		
+		HashMap<String, Double> emissions = new HashMap<String, Double>();
+		emissions.put("wasteEmissions", wasteEmissions);
+		writer.appendToFile(emissions, "src/classes/calculatorResults.txt");
 		
 		return wasteEmissions;
 	}
