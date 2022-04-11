@@ -59,7 +59,10 @@ public class CarbonFootprintCalculatorRecommendations {
 		}
 				
 		else if(typeOfEmission.equals("houseEmissions")) {
-			
+			double limit = 15617 * 1.15;
+			if(amount >= limit) {
+				sendRecommendationMessage(typeOfEmission, 15617, amount);
+			}
 		}
 		
 		else if(typeOfEmission.equals("wasteEmissions")) {
@@ -69,11 +72,17 @@ public class CarbonFootprintCalculatorRecommendations {
 			}
 		}
 		else if(typeOfEmission.equals("flightEmissions")) {
-			
+			double limit = 11905 * 1.15;
+			if(amount >= limit) {
+				sendRecommendationMessage(typeOfEmission, 11905, amount);
+			}
 		}
 		
 		else if(typeOfEmission.equals("carEmissions")) {
-			
+			double limit = 10141 * 1.15;
+			if(amount >= limit) {
+				sendRecommendationMessage(typeOfEmission, 10141, amount);
+			}
 		}
 
 		
@@ -88,6 +97,5 @@ public class CarbonFootprintCalculatorRecommendations {
 		System.out.println("This is somewhere where you can reduce your carbon footprint.");
 		
 	}
-	
 	
 }
