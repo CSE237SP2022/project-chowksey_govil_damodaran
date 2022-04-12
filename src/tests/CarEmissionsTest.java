@@ -18,7 +18,7 @@ class CarEmissionsTest {
 	@Test
 	void testNumberOfCars() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("10 1 52 1 1");
+	    sb.append("10 1 1 1");
 	    
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -27,10 +27,10 @@ class CarEmissionsTest {
 
 	    assertEquals(520,ce,1);
 	}
-	
+	@Test
 	void testAverageMilesDrivenPerWeek() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("1 10 52 1 1");
+	    sb.append("1 10 1 1");
 	    
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -39,10 +39,10 @@ class CarEmissionsTest {
 
 	    assertEquals(520,ce,1);
 	}
-	
+	@Test
 	void testAverageHouseholdFuelEconomy() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("1 1 52 10 1");
+	    sb.append("1 1 10 1");
 	    
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -51,10 +51,10 @@ class CarEmissionsTest {
 
 	    assertEquals(5.2,ce,1);
 	}
-	
+	@Test
 	void testAveragePoundsOfCarbonPerGallon() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("1 1 52 1 10");
+	    sb.append("1 1 1 10");
 	    
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -63,10 +63,10 @@ class CarEmissionsTest {
 
 	    assertEquals(5.2,ce,1);
 	}
-	
+	@Test
 	void testCarEmissions() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("5 50 52 19 15");
+	    sb.append("5 50 19 15");
 	    
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
