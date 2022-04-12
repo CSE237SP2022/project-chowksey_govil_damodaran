@@ -23,7 +23,7 @@ public class Tracker {
 //				if (trackerFile.delete()) {
 //					System.out.println("success");
 //				}
-//			}
+//			} 
 			
 			if (!new File(fileName).exists()) {
 				File trackerFile = new File(fileName);
