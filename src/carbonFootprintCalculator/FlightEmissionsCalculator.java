@@ -42,7 +42,7 @@ public class FlightEmissionsCalculator {
 	
 	private double NonClassWeightMultiplicationContribution() {
 		
-		return ((cargoFactorInverse)*(emissionFactor*multiplier+preproduction)*(1/(averageSeatNumber*passengerLoadFactor)));
+		return ((cargoFactorInverse)*(emissionFactor*multiplier+preproduction)*(1.0/(averageSeatNumber*passengerLoadFactor)));
 	}
 	
 	private double NonClassWeightAdditionContribution() {
