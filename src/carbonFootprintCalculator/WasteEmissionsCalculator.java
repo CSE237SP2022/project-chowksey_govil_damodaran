@@ -23,18 +23,18 @@ public class WasteEmissionsCalculator {
 
 		
 		int plastic = askRecyclingQuestion("plastic");
-		wasteEmissions = reduceIfRecycled(plastic, 89.38, wasteEmissions);
+		wasteEmissions = reduceIfRecycled(plastic, 35.36, wasteEmissions);
 		
 		
 		int glass = askRecyclingQuestion("glass");
-		wasteEmissions = reduceIfRecycled(glass, 89.38, wasteEmissions);
+		wasteEmissions = reduceIfRecycled(glass, 25.39, wasteEmissions);
 		
 
 		int news = askRecyclingQuestion("news");
-		wasteEmissions = reduceIfRecycled(news, 89.38, wasteEmissions);
+		wasteEmissions = reduceIfRecycled(news, 113.14, wasteEmissions);
 		
 		int magazines = askRecyclingQuestion("magazines");
-		wasteEmissions = reduceIfRecycled(magazines, 89.38, wasteEmissions);
+		wasteEmissions = reduceIfRecycled(magazines, 27.46, wasteEmissions);
 		
 		return wasteEmissions;
 	}
