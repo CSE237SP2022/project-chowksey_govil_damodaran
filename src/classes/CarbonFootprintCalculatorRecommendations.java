@@ -13,46 +13,51 @@ public class CarbonFootprintCalculatorRecommendations {
 		writer = new FileWriterAndReader();
 	}
 	
-	public void getRecommendation() {
+	public int getRecommendation() {
 		System.out.println("We will make recommendations on how you can reduce your carbon footprint based on your most recent carbon footprint calculator results. ");
 		
-		File tempFile = new File("src/carbonFootprintCalculator/calculatorResults.txt");
+		File tempFile = new File("src/classes/calculatorResults.txt");
 		boolean exists = tempFile.exists();
 		if(exists == false) {
 			System.out.println("You have no results from the carbon footprint calculator. Please fill out the calculator first and then come back.");
-			return;
+			return 0;
 		}
 		
-		HashMap<String, Double> emissions = writer.readFile("src/carbonFootprintCalculator/calculatorResults.txt");
-		
+		HashMap<String, Double> emissions = writer.readFile("src/classes/calculatorResults.txt");
+		int counter  = 0;
 		for (String i : emissions.keySet()) {
-			compareEnergyAmounts(i, emissions.get(i));
+			counter += compareEnergyAmounts(i, emissions.get(i));
 		}
+		return counter;
 	}
 	
-	private void compareEnergyAmounts(String typeOfEmission, double amount) {
+	private int compareEnergyAmounts(String typeOfEmission, double amount) {
 		if(typeOfEmission.equals("propEmissions")) {
 			double limit = 2243 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 2243, amount);
+				return 1;
 			}
 		}
 		else if(typeOfEmission.equals("natGasEmissions")) {
 			double limit = 3071 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 3071, amount);
+				return 1;
 			}
 		}
 		else if(typeOfEmission.equals("fuelOilEmissions")) {
 			double limit = 4848 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 4848, amount);
+				return 1;
 			}
 		}
 		else if(typeOfEmission.equals("elecGasEmissions")) {
 			double limit = 5455 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 5455, amount);
+				return 1;
 			}
 		}
 				
@@ -60,6 +65,7 @@ public class CarbonFootprintCalculatorRecommendations {
 			double limit = 15617 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 15617, amount);
+				return 1;
 			}
 		}
 		
@@ -67,12 +73,14 @@ public class CarbonFootprintCalculatorRecommendations {
 			double limit = 19702 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 19702, amount);
+				return 1;
 			}
 		}
 		else if(typeOfEmission.equals("flightEmissions")) {
 			double limit = 11905 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 11905, amount);
+				return 1;
 			}
 		}
 		
@@ -80,8 +88,10 @@ public class CarbonFootprintCalculatorRecommendations {
 			double limit = 10141 * 1.15;
 			if(amount >= limit) {
 				sendRecommendationMessage(typeOfEmission, 10141, amount);
+				return 1;
 			}
 		}
+		return 0;
 
 		
 	}

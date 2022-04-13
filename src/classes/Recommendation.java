@@ -21,7 +21,7 @@ public class Recommendation {
 		System.out.println("(2) - Take some pledges to reduce your carbon footprint");
 		
 		Recommendation p = new Recommendation();
-		p.pledgeVariable.mainPledgeMethod();
+		//p.pledgeVariable.mainPledgeMethod();
 		Recommendation r = new Recommendation();
 		
 		r.calcRecs.getRecommendation();
