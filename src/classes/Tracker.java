@@ -15,7 +15,7 @@ public class Tracker {
 		
 	public void runTracker() throws Exception {
 		
-		String fileName = "src/tracker/trackerResults";
+		String fileName = "src/classes/trackerResults";
 		 
 //		th.delete(fileName);
 	
