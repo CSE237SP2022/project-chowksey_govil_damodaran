@@ -29,32 +29,50 @@ public class Tracker {
 				File trackerFile = new File(fileName);
 				trackerFile.createNewFile();
 				Files.writeString(filePath, "Miles: " + 0);
+				Files.writeString(filePath, "Flight: " + 0);
+				Files.writeString(filePath, "Trash: " + 0);
 			}
 			
 			Scanner reader = new Scanner(System.in);  
-			System.out.println("How many miles did you drive?");
 			
-			
+			System.out.println("Please input how many miles you drove:");
 			int miles = reader.nextInt();
+			
+			System.out.println("Please input how many miles you flew:");
+			int flight = reader.nextInt();
+			
+			System.out.println("Please input how many pounds of trash you threw out.");
+			int trash = reader.nextInt();
+			
 			reader.close();
 			
-			
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
-			
-			ArrayList<String> lines = new ArrayList<String>();
 			
 			String currentLine = br.readLine();
 			
 			while (currentLine != null){
-				lines.add(currentLine);
+				String[] splitStr = currentLine.trim().split("\\s+");
+				if (splitStr[0] == "Miles: ") {
+					miles += Integer.valueOf(splitStr[1]);
+				}
+				else if (splitStr[0] == "Flight: ") {
+					flight += Integer.valueOf(splitStr[1]);
+				}
+				else {
+					trash += Integer.valueOf(splitStr[1]);
+				}
 				currentLine = br.readLine();
 			}
 			
-			for(int i = 0; i < lines.size(); i++) {
-				String[] splitStr = lines.get(i).trim().split("\\s+");
-				Integer number = Integer.valueOf(splitStr[1]) + miles;
-				Files.writeString(filePath, "Miles: " + number);
-			}
+
+			File trackerFile = new File(fileName);
+			trackerFile.delete();	
+			trackerFile.createNewFile();
+			Files.writeString(filePath, "Miles: " + 0);
+			Files.writeString(filePath, "Flight: " + 0);
+			Files.writeString(filePath, "Trash: " + 0);
+			
+			System.out.println();
 			
 	    }
 	}
