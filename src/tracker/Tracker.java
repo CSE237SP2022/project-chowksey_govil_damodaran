@@ -1,13 +1,7 @@
 package tracker;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.Scanner;
-
-import carbonFootprintCalculator.CarbonFootPrintCalculator;
 
 public class Tracker {
 	
@@ -51,22 +45,9 @@ public class Tracker {
 			
 			scanner.close();
 			
-			BufferedReader reader = new BufferedReader(new FileReader(fileName));
-			String currentLine;
-			while ((currentLine = reader.readLine()) != null) {
-				String[] splitStr = currentLine.trim().split("\\s+");
-				if (splitStr[0].equals("Miles:")) {
-					miles += Integer.valueOf(splitStr[1]);
-				}
-				else if (splitStr[0].equals("Flight:")) {
-					flight += Integer.valueOf(splitStr[1]);
-				}
-				else if (splitStr[0].equals("Trash:")) {
-					trash += Integer.valueOf(splitStr[1]);
-				}
-			}
-			
-			reader.close();
+			miles = th.parseText(fileName, "Miles:", miles);
+			flight = th.parseText(fileName, "Flight:", flight);
+			trash = th.parseText(fileName, "Trash:", trash);
 			
 			th.write(fileName, miles, flight, trash);
 			

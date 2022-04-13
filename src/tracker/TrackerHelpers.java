@@ -30,5 +30,20 @@ public class TrackerHelpers {
 		writer.write("Trash: " + trash + "\n");
 		writer.close();
 	}
+	
+	public int parseText(String fileName, String compString, int variable) throws Exception {
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		String currentLine;
+		while ((currentLine = reader.readLine()) != null) {
+			String[] splitStr = currentLine.trim().split("\\s+");
+			if (splitStr[0].equals(compString)) {
+				variable += Integer.valueOf(splitStr[1]);
+			}
+		}
+		
+		reader.close();
+		
+		return variable;
+	}
 
 }
