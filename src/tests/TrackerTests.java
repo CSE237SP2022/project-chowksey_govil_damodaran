@@ -8,8 +8,8 @@ import java.io.FileReader;
 
 import org.junit.jupiter.api.Test;
 
-import tracker.Tracker;
-import tracker.TrackerHelpers;
+import classes.Tracker;
+import classes.TrackerHelpers;
  
 class TrackerTests {
 

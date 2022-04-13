@@ -11,6 +11,7 @@ Our project is a carbon footprint calculator aimed to help college students redu
 - User can more accurately find out their flight emissions with the carbon footprint calculator
 - User can find out their car emissions with the carbon footprint calculator
 - Flight emissions basic calculation based on the flight type (short-haul vs. long-haul)
+- User can track daily usage of things like waste, minutes driven, etc.
 
 # User stories to be completed in next iteration
 - User can find out more information about carbon footprint (informational)
@@ -19,6 +20,7 @@ Our project is a carbon footprint calculator aimed to help college students redu
 - (Possibly) User can see a pie graph of their carbon emissions - visualizations rather than reading numbers
 - User can enter this ZIP code to get more exact emission factors (rather than assuming the 63112 zip code)
 - User can find out carbon emissions from public transportation with the carbon footprint calculator
+- User can use tracker to track cummulative usage
 
 # Anything that is implemented but doesn't work
 - We still need to combine the Tracker app with the rest of the app (option 3)

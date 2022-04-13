@@ -23,6 +23,11 @@ public class MainCalculatorAndTracker {
 		}
 		else if(choice == 3) {
 			Tracker t = new Tracker();
+			try {
+				t.runTracker();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
