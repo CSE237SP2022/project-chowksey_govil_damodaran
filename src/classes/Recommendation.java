@@ -15,17 +15,22 @@ public class Recommendation {
 		calcRecs = new CarbonFootprintCalculatorRecommendations();
 	}
 	
-	public static void main(String[] args) {
+	public void recommend() {
 		System.out.println("Welcome to our recommendation section. Please choose one of the following:");
 		System.out.println("(1) - Recommendations based on your carbon footprint. Note: Please have completed the Carbon Footprint Calculator first");
 		System.out.println("(2) - Take some pledges to reduce your carbon footprint");
 		
-		Recommendation p = new Recommendation();
-		//p.pledgeVariable.mainPledgeMethod();
-		Recommendation r = new Recommendation();
+		Scanner reader = new Scanner(System.in);
+		int choice = reader.nextInt();
 		
-		r.calcRecs.getRecommendation();
-		
+		if(choice == 1) {
+			Recommendation r = new Recommendation();
+			r.calcRecs.getRecommendation();
+		}
+		else if(choice == 2) {
+			Recommendation p = new Recommendation();
+			p.pledgeVariable.mainPledgeMethod();
+		}
 		
 	}
 

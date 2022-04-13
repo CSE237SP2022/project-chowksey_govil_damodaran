@@ -49,8 +49,7 @@ public class CarbonFootPrintCalculator {
 	
 	public static void main(String[] args) {
 		
-		CarbonFootPrintCalculator cpc = new CarbonFootPrintCalculator();
-		cpc.runCalculator();
+		
 		
 		
 	}
