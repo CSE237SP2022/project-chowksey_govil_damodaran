@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-import carbonFootprintCalculator.CarbonFootPrintCalculator;
-
 public class Tracker {
 	
 	public Tracker(){
