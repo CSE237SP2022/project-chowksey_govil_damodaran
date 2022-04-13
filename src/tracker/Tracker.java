@@ -1,10 +1,9 @@
 package tracker;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Tracker {
@@ -15,64 +14,80 @@ public class Tracker {
 		public static void main(String[] args) throws Exception {
 			
 			String fileName = "src/tracker/trackerResults";
-			Path filePath = Path.of(fileName);
-			 
+			
 //			if (new File(fileName).exists()) {
 //				System.out.println("exists");
 //				File trackerFile = new File(fileName);
 //				if (trackerFile.delete()) {
 //					System.out.println("success");
 //				}
-//			} 
+//			}
 			
 			if (!new File(fileName).exists()) {
+				System.out.println("here");
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 				File trackerFile = new File(fileName);
 				trackerFile.createNewFile();
-				Files.writeString(filePath, "Miles: " + 0);
-				Files.writeString(filePath, "Flight: " + 0);
-				Files.writeString(filePath, "Trash: " + 0);
+				writer.write("Miles: " + 0 + "\n");
+				writer.write("Flight: " + 0 + "\n");
+				writer.write("Trash: " + 0 + "\n");
+				writer.close();
 			}
 			
-			Scanner reader = new Scanner(System.in);  
+			BufferedReader br = new BufferedReader(new FileReader(fileName));
+			String line;
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+			br.close();
+			
+			Scanner scanner = new Scanner(System.in);  
 			
 			System.out.println("Please input how many miles you drove:");
-			int miles = reader.nextInt();
+			int miles = scanner.nextInt();
 			
 			System.out.println("Please input how many miles you flew:");
-			int flight = reader.nextInt();
+			int flight = scanner.nextInt();
 			
 			System.out.println("Please input how many pounds of trash you threw out.");
-			int trash = reader.nextInt();
+			int trash = scanner.nextInt();
+			
+			scanner.close();
+			
+			
+			
+			BufferedReader reader = new BufferedReader(new FileReader(fileName));
+			String currentLine;
+			while ((currentLine = reader.readLine()) != null) {
+				String[] splitStr = currentLine.trim().split("\\s+");
+				if (splitStr[0].equals("Miles:")) {
+					miles += Integer.valueOf(splitStr[1]);
+				}
+				else if (splitStr[0].equals("Flight:")) {
+					flight += Integer.valueOf(splitStr[1]);
+				}
+				else if (splitStr[0].equals("Trash:")) {
+					trash += Integer.valueOf(splitStr[1]);
+				}
+			}
 			
 			reader.close();
 			
-			BufferedReader br = new BufferedReader(new FileReader(fileName));
-			
-			String currentLine = br.readLine();
-			
-			while (currentLine != null){
-				String[] splitStr = currentLine.trim().split("\\s+");
-				if (splitStr[0] == "Miles: ") {
-					miles += Integer.valueOf(splitStr[1]);
-				}
-				else if (splitStr[0] == "Flight: ") {
-					flight += Integer.valueOf(splitStr[1]);
-				}
-				else {
-					trash += Integer.valueOf(splitStr[1]);
-				}
-				currentLine = br.readLine();
-			}
-			
-
+			BufferedWriter writer2 = new BufferedWriter(new FileWriter(fileName));
 			File trackerFile = new File(fileName);
-			trackerFile.delete();	
 			trackerFile.createNewFile();
-			Files.writeString(filePath, "Miles: " + 0);
-			Files.writeString(filePath, "Flight: " + 0);
-			Files.writeString(filePath, "Trash: " + 0);
+			writer2.write("Miles: " + miles + "\n");
+			writer2.write("Flight: " + flight + "\n");
+			writer2.write("Trash: " + trash + "\n");
 			
-			System.out.println();
 			
+			writer2.close();
+			
+			BufferedReader br2 = new BufferedReader(new FileReader(fileName));
+			String line2;
+			while ((line2 = br2.readLine()) != null) {
+				System.out.println(line2);
+			}
+			br2.close();
 	    }
 	}
