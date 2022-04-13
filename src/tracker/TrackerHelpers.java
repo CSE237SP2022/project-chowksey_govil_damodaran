@@ -34,7 +34,7 @@ public class TrackerHelpers {
 		writer.write("Flight: " + flight + "\n");
 		writer.write("Trash: " + trash + "\n");
 		writer.close();
-		
+		 
 	}
 	
 	public void delete(String fileName) throws Exception {

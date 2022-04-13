@@ -19,7 +19,7 @@ public class Tracker {
 			if (!new File(fileName).exists()) {
 				th.write(fileName, 0, 0, 0);
 			}
-			
+			 
 			th.read(fileName);
 			
 			Scanner scanner = new Scanner(System.in);  

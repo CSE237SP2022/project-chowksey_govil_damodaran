@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import tracker.Tracker;
 import tracker.TrackerHelpers;
-
+ 
 class TrackerTests {
 
 	@Test
