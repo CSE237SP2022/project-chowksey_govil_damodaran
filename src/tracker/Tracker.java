@@ -14,7 +14,7 @@ public class Tracker {
 		public static void main(String[] args) throws Exception {
 			
 			String fileName = "src/tracker/trackerResults";
-//			
+			
 //			if (new File(fileName).exists()) {
 //				System.out.println("exists");
 //				File trackerFile = new File(fileName);
@@ -54,22 +54,21 @@ public class Tracker {
 			
 			scanner.close();
 			
+			
+			
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
-			
-			String currentLine = reader.readLine();
-			
-			while (currentLine != null){
+			String currentLine;
+			while ((currentLine = reader.readLine()) != null) {
 				String[] splitStr = currentLine.trim().split("\\s+");
-				if (splitStr[0] == "Miles: ") {
+				if (splitStr[0].equals("Miles:")) {
 					miles += Integer.valueOf(splitStr[1]);
 				}
-				else if (splitStr[0] == "Flight: ") {
+				else if (splitStr[0].equals("Flight:")) {
 					flight += Integer.valueOf(splitStr[1]);
 				}
-				else {
+				else if (splitStr[0].equals("Trash:")) {
 					trash += Integer.valueOf(splitStr[1]);
 				}
-				currentLine = reader.readLine();
 			}
 			
 			reader.close();
@@ -89,6 +88,6 @@ public class Tracker {
 			while ((line2 = br2.readLine()) != null) {
 				System.out.println(line2);
 			}
-			br.close();
+			br2.close();
 	    }
 	}
