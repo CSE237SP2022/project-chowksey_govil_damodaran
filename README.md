@@ -15,7 +15,7 @@ Our project is a carbon footprint calculator aimed to help college students redu
 # User stories to be completed in next iteration
 - User can find out more information about carbon footprint (informational)
 - User can test their knowledge about carbon footprint related things
-- User will have a more user-friendly experience
+- User will have a more user-friendly experience 
 - (Possibly) User can see a pie graph of their carbon emissions - visualizations rather than reading numbers
 - User can enter this ZIP code to get more exact emission factors (rather than assuming the 63112 zip code)
 - User can find out carbon emissions from public transportation with the carbon footprint calculator
