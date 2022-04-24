@@ -43,6 +43,7 @@ public class CarbonFootPrintCalculator {
 		System.out.println("Your total emissions from car usage is: ");
 		System.out.print(ce);
 		System.out.print(" pounds of carbon dioxide per year");
+		System.out.println("Here is a pie chart detailing your carbon emission usage");
 		reader.close();
 		
 	}
