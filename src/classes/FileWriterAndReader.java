@@ -39,7 +39,7 @@ public class FileWriterAndReader {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Invalid Zip");
 		}  
 		return eFactor;
 	}
@@ -65,7 +65,7 @@ public class FileWriterAndReader {
 		try {
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileToAdd,true));
-			
+
 			for (String i : emissions.keySet()) {
 				writer.println(i + " " + emissions.get(i));
 			}
