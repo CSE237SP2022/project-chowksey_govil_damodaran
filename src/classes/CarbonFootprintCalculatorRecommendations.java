@@ -31,6 +31,7 @@ public class CarbonFootprintCalculatorRecommendations {
 		return counter;
 	}
 	
+	
 	private int compareEnergyAmounts(String typeOfEmission, double amount) {
 		if(typeOfEmission.equals("propEmissions")) {
 			double limit = 2243 * 1.15;

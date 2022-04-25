@@ -1,5 +1,7 @@
 package classes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -70,8 +72,14 @@ public class HouseEmissionsCalculator {
 		
 		double elecEmissions = 0.0;
 		
+		System.out.println("What is your ZIP code?");
+		int zip = reader.nextInt();
+		
+		double eFactor = writer.readCSVForEFactor(zip);
+		
 		// the e_factor is for 63112 missouri zip code
-		elecEmissions = (elecDollars/0.1188)*1.820425*12;
+		System.out.println(eFactor);
+		elecEmissions = (elecDollars/0.1188)*eFactor*12;
 		
 		if(greenPower == 1) {
 			System.out.println("What portion of your household's total purchased electricity use is green power? Enter a number between 0 and 100");

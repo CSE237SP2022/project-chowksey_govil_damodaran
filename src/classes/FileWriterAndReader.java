@@ -1,8 +1,11 @@
 package classes;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -12,6 +15,33 @@ public class FileWriterAndReader {
 	
 	public FileWriterAndReader() {
 		
+	}
+	
+	// source: https://www.javatpoint.com/how-to-read-csv-file-in-java
+	// default if zip code doesn't work will be 63112 zip code
+	public double readCSVForEFactor(int zip) {
+		double eFactor = 1820.425/1000;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/classes/eFactors.csv"));
+			String line = "";  
+			String splitBy = ",";  
+			while ((line = br.readLine()) != null)  
+			{  
+				String[] efactorLine = line.split(splitBy); 	
+				if(efactorLine.length == 0) {
+					continue;
+				}
+				if(efactorLine[0].equals(String.valueOf(zip))) {
+					eFactor = Double.parseDouble(efactorLine[3])/1000;
+					break;
+				}
+			}
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Invalid Zip");
+		}  
+		return eFactor;
 	}
 	
 	public void writeToFile(HashMap<String, Double> emissions, String fileName) {
@@ -35,7 +65,7 @@ public class FileWriterAndReader {
 		try {
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileToAdd,true));
-			
+
 			for (String i : emissions.keySet()) {
 				writer.println(i + " " + emissions.get(i));
 			}
