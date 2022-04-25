@@ -17,35 +17,30 @@ public class FileWriterAndReader {
 		
 	}
 	
+	// source: https://www.javatpoint.com/how-to-read-csv-file-in-java
+	// default if zip code doesn't work will be 63112 zip code
 	public double readCSVForEFactor(int zip) {
-		// default if zip code doesn't work will be 63112 zip code
 		double eFactor = 1820.425/1000;
-		// source: https://www.javatpoint.com/how-to-read-csv-file-in-java
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/classes/eFactors.csv"));
 			String line = "";  
 			String splitBy = ",";  
 			while ((line = br.readLine()) != null)  
 			{  
-				String[] employee = line.split(splitBy); 
-				if(employee[0].equals("Zip") ) {
+				String[] efactorLine = line.split(splitBy); 	
+				if(efactorLine.length == 0) {
 					continue;
 				}
-				if(Integer.parseInt(employee[0]) == zip) {
-					eFactor = Double.parseDouble(employee[3]);
+				if(efactorLine[0].equals(String.valueOf(zip))) {
+					eFactor = Double.parseDouble(efactorLine[3])/1000;
+					break;
 				}
-					System.out.println(employee[0]);  
-				}
-				
-			  
-
+			}
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
-		
-		
 		return eFactor;
 	}
 	
