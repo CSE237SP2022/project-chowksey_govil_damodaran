@@ -1,5 +1,5 @@
 package tests;
-
+import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
