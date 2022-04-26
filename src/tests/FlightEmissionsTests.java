@@ -35,7 +35,7 @@ class FlightEmissionsTests {
 	    assertEquals(11.68038,result,0.1);
 	}
 	
-	//will update and improve test for next iteration, as still need to modify the FlightEmissions class
+	@Test
 	void testFlightEmissions() {
 		StringBuilder sb = new StringBuilder();
 	    sb.append("L 100 E");
