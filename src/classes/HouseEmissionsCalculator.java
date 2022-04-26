@@ -77,8 +77,6 @@ public class HouseEmissionsCalculator {
 		
 		double eFactor = writer.readCSVForEFactor(zip);
 		
-		// the e_factor is for 63112 missouri zip code
-		System.out.println(eFactor);
 		elecEmissions = (elecDollars/0.1188)*eFactor*12;
 		
 		if(greenPower == 1) {
