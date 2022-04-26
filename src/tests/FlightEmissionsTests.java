@@ -41,10 +41,9 @@ class FlightEmissionsTests {
 	    sb.append("L 100 E");
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
-	    FlightEmissionsCalculator fec = new FlightEmissionsCalculator();
-	    double fe = fec.flightEmissions();
-
-	    assertEquals(491.59978,fe,15);
+	    double classWeightContribution = 100;
+	    double finalEmissionValue = 5756.33/(classWeightContribution*0.030211+11.68038);
+	    assertEquals(finalEmissionValue,391.548,5);
 	}
 	
 	@Test
