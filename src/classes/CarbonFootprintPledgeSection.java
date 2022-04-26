@@ -11,16 +11,24 @@ public class CarbonFootprintPledgeSection {
 		reader = new Scanner(System.in);
 	}
 	
-	public void mainPledgeMethod() {
+	public String mainPledgeMethod() {
 		
 		System.out.println("Here you will read, assess, and take several pledges regarding your carbon emissions.");
-		housePledge();
-		carPledge();
-		wastePledge();
-		flightPledge();
+		String hp = housePledge();
+		String cp = carPledge();
+		String wp = wastePledge();
+		String fp = flightPledge();
+		
+		if (hp.equals(cp) && cp.equals(wp) && wp.equals(fp)) {
+			return "Great!";
+		}
+		
+		return "Can still improve your emissions handlings.";
 	}
 	
-	private void housePledge() {
+	private String housePledge() {
+		
+		int counter = 0;
 		
 		System.out.println("Here is the House Pledge section.");
 		
@@ -29,6 +37,7 @@ public class CarbonFootprintPledgeSection {
 		double tempReduce = reader.nextDouble();
 		if (tempReduce > 0.0) {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
 		else {
 			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
@@ -41,6 +50,7 @@ public class CarbonFootprintPledgeSection {
 		}
 		else {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
 		
 		System.out.println("You should enable the sleep feature on your electronic devices. Will you do this? Enter 0 for no and 1 for yes.");
@@ -50,6 +60,7 @@ public class CarbonFootprintPledgeSection {
 		}
 		else {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
 		
 		System.out.println("You should dry your clothes on a drying rack instead of using the dryer for about 50% of your loads. Will you do this? Enter 0 for no and 1 for yes.");
@@ -59,10 +70,18 @@ public class CarbonFootprintPledgeSection {
 		}
 		else {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
+		
+		if (counter == 4) {
+			return "Great!";
+		}
+		return "Not fully committed.";
 	}
 	
-	private void carPledge() {
+	private String carPledge() {
+		
+		int counter = 0;
 		
 		System.out.println("Here is the Car Pledge section.");
 		
@@ -71,6 +90,7 @@ public class CarbonFootprintPledgeSection {
 		double milesReduce = reader.nextDouble();
 		if (milesReduce > 0.0) {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
 		else {
 			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
@@ -83,10 +103,17 @@ public class CarbonFootprintPledgeSection {
 		}
 		else {
 			System.out.println("Great!");
+			counter = counter + 1;
 		}
+		
+		if (counter == 2) {
+			return "Great!";
+		}
+		
+		return "Not fully committed.";
 	}
 	
-	private void wastePledge() {
+	private String wastePledge() {
 		
 		System.out.println("Here is the Waste Pledge section.");
 		
@@ -94,13 +121,15 @@ public class CarbonFootprintPledgeSection {
 		int r = reader.nextInt();
 		if (r == 0) {
 			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
+			return "It's okay. Try to reduce your carbon footprint elsewhere.";
 		}
 		else {
 			System.out.println("Great!");
+			return "Great!";
 		}	
 	}
 	
-	private void flightPledge() {
+	private String flightPledge() {
 		
 		System.out.println("Here is the Flight Pledge section.");
 		
@@ -108,9 +137,11 @@ public class CarbonFootprintPledgeSection {
 		int f = reader.nextInt();
 		if (f == 0) {
 			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
+			return "It's okay. Try to reduce your carbon footprint elsewhere.";
 		}
 		else {
 			System.out.println("Great!");
+			return "Great!";
 		}
 	}
 }
