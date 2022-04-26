@@ -8,6 +8,7 @@ public class CarbonFootPrintCalculator {
 	FlightEmissionsCalculator fec;
 	HouseEmissionsCalculator hec;
 	CarEmissionsCalculator cec;
+	PublicTransportationEmissions ptc;
 
 	Scanner reader;
 	
@@ -17,6 +18,7 @@ public class CarbonFootPrintCalculator {
 		hec = new HouseEmissionsCalculator();
 		cec = new CarEmissionsCalculator();
 		fec = new FlightEmissionsCalculator();
+		ptc = new PublicTransportationEmissions();
 		reader = new Scanner(System.in);
 		
 	}
@@ -37,6 +39,11 @@ public class CarbonFootPrintCalculator {
 		System.out.println(fe);
 		System.out.println("Your total emissions from waste is: ");
 		System.out.println(we);
+		System.out.print(" pounds of carbon dioxide per year");
+		System.out.println();
+		double pte = ptc.publicTransportEmissions();
+		System.out.println("Your total emissions from public transportation is: ");
+		System.out.println(pte);
 		System.out.print(" pounds of carbon dioxide per year");
 		System.out.println();
 		

@@ -1,0 +1,6 @@
+carEmissions 45.6140350877193
+carEmissions 5.2
+carEmissions 520.0
+carEmissions 520.0
+carEmissions 5.2
+totalPublicTransportEmissions 126.28000000000002

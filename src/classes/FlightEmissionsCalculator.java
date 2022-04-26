@@ -20,6 +20,7 @@ public class FlightEmissionsCalculator {
 	//using general averages
 	double cargoFactorInverse = 0.835;
 	double averageSeatNumber = 216.86;
+	double classWeight = 1.21;
 	
 	public FlightEmissionsCalculator() {
 		
@@ -33,11 +34,10 @@ public class FlightEmissionsCalculator {
 		double totalFlightEmissions = 0.0;
 		
 		double nonLinearModelContribution = HaulTypeHelper();
-		double classWeightContribution = FlightClassWeightContribution();
 		double nonClassWeightMContribution = NonClassWeightMultiplicationContribution();
 		double nonClassWeightAContribution = NonClassWeightAdditionContribution();
 		
-		totalFlightEmissions = nonLinearModelContribution/(classWeightContribution*nonClassWeightMContribution+nonClassWeightAContribution);
+		totalFlightEmissions = nonLinearModelContribution/(classWeight*nonClassWeightMContribution+nonClassWeightAContribution);
 		
 		HashMap<String, Double> emissions = new HashMap<String, Double>();
 		emissions.put("flightEmissions", totalFlightEmissions);
@@ -100,31 +100,6 @@ public class FlightEmissionsCalculator {
 		double NLModelCoefficientC = 5044.93;
 		
 		return NLMModelContribution(NLModelCoefficientA,NLModelCoefficientB,NLModelCoefficientC, flightDistance);
-	}
-	
-	private double FlightClassWeightContribution() {
-		
-		double classWeight = 0.0;
-		System.out.println("Enter your cabin class type: economy (enter E), business (enter B), or first class (enter F).");
-		flightReader.nextLine();
-		String cabinClass = flightReader.nextLine();
-		
-		if (cabinClass.equals("E")) {
-			
-			classWeight = 0.96;
-		}
-		
-		else if (cabinClass.equals("B")) {
-			
-			classWeight = 1.26;
-		}
-		
-		else if (cabinClass.equals("F")) {
-			
-			classWeight = 2.40;
-		}
-		
-		return classWeight;
 	}
 	
 	private double NLMModelContribution(double a, double b, double c, double totalFlightDistance) {
