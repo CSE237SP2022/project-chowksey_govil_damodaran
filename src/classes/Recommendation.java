@@ -10,7 +10,7 @@ public class Recommendation {
 	CarbonFootprintCalculatorRecommendations calcRecs;
 	
 	public Recommendation() {
-		
+		reader = new Scanner(System.in);
 		pledgeVariable = new CarbonFootprintPledgeSection();
 		calcRecs = new CarbonFootprintCalculatorRecommendations();
 	}
@@ -20,7 +20,7 @@ public class Recommendation {
 		System.out.println("(1) - Recommendations based on your carbon footprint. Note: Please have completed the Carbon Footprint Calculator first");
 		System.out.println("(2) - Take some pledges to reduce your carbon footprint");
 		
-		Scanner reader = new Scanner(System.in);
+		
 		int choice = reader.nextInt();
 		
 		if(choice == 1) {

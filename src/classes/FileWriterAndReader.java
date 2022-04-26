@@ -39,7 +39,7 @@ public class FileWriterAndReader {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Invalid Zip");
+			System.out.println("Invalid Zip or Zip is not in our database :(");
 		}  
 		return eFactor;
 	}

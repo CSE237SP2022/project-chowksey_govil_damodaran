@@ -36,8 +36,6 @@ public class Tracker {
 		System.out.println("Please input how many pounds of trash you threw out.");
 		int trash = scanner.nextInt();
 		
-		scanner.close();
-		
 		miles = th.parseText(fileName, "Miles:", miles);
 		flight = th.parseText(fileName, "Flight:", flight);
 		trash = th.parseText(fileName, "Trash:", trash);
