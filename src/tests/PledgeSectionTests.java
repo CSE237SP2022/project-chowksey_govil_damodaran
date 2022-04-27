@@ -14,7 +14,7 @@ class PledgeSectionTests {
 	@Test
 	void testMainPledgeMethod() {
 		StringBuilder sb = new StringBuilder();
-	    sb.append("10.0 1 1 1 10.0 1 1 1");
+	    sb.append("10.0 1 1 1 1 1");
 	    String data = sb.toString();
 	    System.setIn(new ByteArrayInputStream(data.getBytes()));
 	    CarbonFootprintPledgeSection cps = new CarbonFootprintPledgeSection();
