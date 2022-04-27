@@ -10,7 +10,7 @@ public class MainCalculatorAndTracker {
 		Scanner reader = new Scanner(System.in);
 		while(exit == false) {
 			System.out.println();
-			System.out.println("Press 1 to go to our carbon footprint calculator. Press 2 to go to our recommendation section. Press 3 to go to our tracker. Press 4 to exit.");	
+			System.out.println("Press 1 to go to our carbon footprint calculator. Press 2 to go to our recommendation section. Press 3 to go to our tracker. Press 4 to go to our quiz. Press 5 to exit.");	
 			int choice = reader.nextInt();
 			if(choice == 1) {
 				CarbonFootPrintCalculator cfp = new CarbonFootPrintCalculator();
@@ -27,6 +27,10 @@ public class MainCalculatorAndTracker {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+			else if (choice == 4) {
+				Quiz q = new Quiz();
+				q.runQuiz();
 			}
 			else {
 				exit = true;
