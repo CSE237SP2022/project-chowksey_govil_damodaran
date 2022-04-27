@@ -53,27 +53,7 @@ public class CarbonFootprintPledgeSection {
 			counter = counter + 1;
 		}
 		
-		System.out.println("You should enable the sleep feature on your electronic devices. Will you do this? Enter 0 for no and 1 for yes.");
-		int sf = reader.nextInt();
-		if (sf == 0) {
-			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
-		}
-		else {
-			System.out.println("Great!");
-			counter = counter + 1;
-		}
-		
-		System.out.println("You should dry your clothes on a drying rack instead of using the dryer for about 50% of your loads. Will you do this? Enter 0 for no and 1 for yes.");
-		int dr = reader.nextInt();
-		if (dr == 0) {
-			System.out.println("It's okay. Try to reduce your carbon footprint elsewhere.");
-		}
-		else {
-			System.out.println("Great!");
-			counter = counter + 1;
-		}
-		
-		if (counter == 4) {
+		if (counter == 2) {
 			return "Great!";
 		}
 		return "Not fully committed.";
