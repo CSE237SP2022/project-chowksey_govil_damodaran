@@ -27,6 +27,9 @@ public class TrackerHelpers {
 				System.out.println("Here is your cumulative usage starting from: " + splitStr[1]);
 			} 
 			else {
+				if (difference == 0) {
+					difference++;
+				}
 				System.out.println(line + ", Average Per Day: " + (Integer.valueOf(splitStr[1])/difference));	
 			}
 		}

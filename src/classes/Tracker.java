@@ -35,25 +35,7 @@ public class Tracker {
 				th.read(fileName);
 			}
 			else if (response == 2) {
-				System.out.println(" ");
-				System.out.println("Please input how many miles you drove:");
-				int miles = scanner.nextInt();
-				
-				System.out.println("Please input how many miles you flew:");
-				int flight = scanner.nextInt();
-				
-				System.out.println("Please input how many pounds of trash you threw out.");
-				int trash = scanner.nextInt();
-				
-				LocalDate date = th.parseTextDate(fileName, "Date:");
-				miles = th.parseText(fileName, "Miles:", miles);
-				flight = th.parseText(fileName, "Flight:", flight);
-				trash = th.parseText(fileName, "Trash:", trash);
-				
-				th.write(fileName, miles, flight, trash, date);
-				
-				System.out.println(" ");
-				System.out.println("Metrics Updated!");
+				response2(fileName);
 			}
 			else if (response == 3) {
 				break;
@@ -64,6 +46,31 @@ public class Tracker {
 			
 		}
 		
+	}
+	
+	public void response2(String fileName) throws Exception {
+		
+		Scanner scanner = new Scanner(System.in); 
+		
+		System.out.println(" ");
+		System.out.println("Please input how many miles you drove:");
+		int miles = scanner.nextInt();
+		
+		System.out.println("Please input how many miles you flew:");
+		int flight = scanner.nextInt();
+		
+		System.out.println("Please input how many pounds of trash you threw out.");
+		int trash = scanner.nextInt();
+		
+		LocalDate date = th.parseTextDate(fileName, "Date:");
+		miles = th.parseText(fileName, "Miles:", miles);
+		flight = th.parseText(fileName, "Flight:", flight);
+		trash = th.parseText(fileName, "Trash:", trash);
+		
+		th.write(fileName, miles, flight, trash, date);
+		
+		System.out.println(" ");
+		System.out.println("Metrics Updated!");
 	}
 
 }
