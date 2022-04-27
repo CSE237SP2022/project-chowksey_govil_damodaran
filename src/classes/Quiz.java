@@ -20,10 +20,12 @@ public class Quiz {
 			int response = scanner.nextInt();
 			
 			if (response == 1) {
-				easyQuiz();
+				int score = easyQuiz();
+				System.out.println("You scored a " + score + "/5");
 			}
 			else if (response == 2) {
-				hardQuiz();
+				int score = hardQuiz();
+				System.out.println("You scored a " + score + "/5");
 			}
 			else if (response == 3) {
 				break;
@@ -48,7 +50,7 @@ public class Quiz {
 		return counter;
 	}
 	
-	public void easyQuiz() {
+	public int easyQuiz() {
 	
 		int counter = 0;
 		Scanner scanner = new Scanner(System.in); 
@@ -86,13 +88,11 @@ public class Quiz {
 		System.out.println("b.) Averages precipitation stays the same.");
 		System.out.println("c.) Averages precipitation decreases.");
 		
-		counter = checkCorrect("a", scanner.nextLine(), counter);
-		
-		System.out.println("You scored a " + counter + "/5");
+		return checkCorrect("a", scanner.nextLine(), counter);
 		
 	}
 	
-	public void hardQuiz() {
+	public int hardQuiz() {
 		
 		int counter = 0;
 		Scanner scanner = new Scanner(System.in); 
@@ -130,9 +130,7 @@ public class Quiz {
 		System.out.println("b.) Austrailia.");
 		System.out.println("c.) China.");
 		
-		counter = checkCorrect("c", scanner.nextLine(), counter);
-		
-		System.out.println("You scored a " + counter + "/5");
+		return checkCorrect("c", scanner.nextLine(), counter);
 		
 	}
 
