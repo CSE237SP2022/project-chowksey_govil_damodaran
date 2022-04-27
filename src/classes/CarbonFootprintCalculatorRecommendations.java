@@ -92,11 +92,48 @@ public class CarbonFootprintCalculatorRecommendations {
 				return 1;
 			}
 		}
-		return 0;
-
-		
+		return 0;	
 	}
-
+	
+	private int sendRecommendationMessageWrapper(double average, double amount, String typeOfEmission) {
+		double limit = average * 1.15; // 1.15 is a buffer
+		if(amount >= limit) {
+			sendRecommendationMessage(typeOfEmission, average, amount);
+			return 1;
+		}
+		return 0;
+	}
+	
+	/*
+	
+	private int compareEnergyAmounts(String typeOfEmission, double amount) {
+		if(typeOfEmission.equals("propEmissions")) {
+			return sendRecommendationMessageWrapper(2243, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("natGasEmissions")) {
+			return sendRecommendationMessageWrapper(3071, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("fuelOilEmissions")) {
+			return sendRecommendationMessageWrapper(4848, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("elecGasEmissions")) {
+			return sendRecommendationMessageWrapper(5455, amount, typeOfEmission);
+		}		
+		else if(typeOfEmission.equals("houseEmissions")) {
+			return sendRecommendationMessageWrapper(15617, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("wasteEmissions")) {
+			return sendRecommendationMessageWrapper(19702, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("flightEmissions")) {
+			return sendRecommendationMessageWrapper(11905, amount, typeOfEmission);
+		}
+		else if(typeOfEmission.equals("carEmissions")) {
+			return sendRecommendationMessageWrapper(10141, amount, typeOfEmission);
+		}
+		return 0;
+	}
+	*/
 	private void sendRecommendationMessage(String typeOfEmission, double average, double amount) {
 		double percentageDifference = (amount - average)/((amount+average)/2) * 100;
 		System.out.println();
@@ -106,5 +143,6 @@ public class CarbonFootprintCalculatorRecommendations {
 		System.out.println("This is somewhere where you can reduce your carbon footprint.");
 		
 	}
+
 	
 }

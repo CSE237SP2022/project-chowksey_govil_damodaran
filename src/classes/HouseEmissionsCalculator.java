@@ -16,7 +16,7 @@ public class HouseEmissionsCalculator {
 	}
 	
 	public double houseEmissions() {
-		System.out.println("Now we will ask you about your house energy usage.");
+		System.out.println("We will ask you about your house energy usage.");
 		
 		double houseEmissions = 0.0;
 		HashMap<String, Double> emissions = new HashMap<String, Double>();
