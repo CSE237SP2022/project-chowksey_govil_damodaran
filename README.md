@@ -8,7 +8,8 @@ Our project is a carbon footprint calculator aimed to help college students redu
 - User can test their knowledge about carbon footprint related things with a beginner quiz or an advanced quiz - and learn from these quizzes too
 - User can enter this ZIP code to get more exact emission factors (rather than assuming the 63112 zip code)
 - User can find out carbon emissions from public transportation with the carbon footprint calculator
-- User can use tracker to track cummulative usage
+- User can use tracker to track cumulative and average usage of basic metrics with the option of viewing or updates variables.
+- User can take an easy and advanced quiz to test their knowledge of carbon emissions.
 - User can loop through different parts of the application without having to restart it over and over again
 - User can see percentage breakdown of carbon footprint calculator results
 
