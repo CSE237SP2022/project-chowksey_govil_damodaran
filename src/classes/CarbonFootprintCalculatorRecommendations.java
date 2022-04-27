@@ -34,67 +34,39 @@ public class CarbonFootprintCalculatorRecommendations {
 	
 	private int compareEnergyAmounts(String typeOfEmission, double amount) {
 		if(typeOfEmission.equals("propEmissions")) {
-			double limit = 2243 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 2243, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(2243, amount, typeOfEmission);
 		}
 		else if(typeOfEmission.equals("natGasEmissions")) {
-			double limit = 3071 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 3071, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(3071, amount, typeOfEmission);
 		}
 		else if(typeOfEmission.equals("fuelOilEmissions")) {
-			double limit = 4848 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 4848, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(4848, amount, typeOfEmission);
 		}
 		else if(typeOfEmission.equals("elecGasEmissions")) {
-			double limit = 5455 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 5455, amount);
-				return 1;
-			}
-		}
-				
+			return sendRecommendationMessageWrapper(5455, amount, typeOfEmission);
+		}		
 		else if(typeOfEmission.equals("houseEmissions")) {
-			double limit = 15617 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 15617, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(15617, amount, typeOfEmission);
 		}
-		
 		else if(typeOfEmission.equals("wasteEmissions")) {
-			double limit = 19702 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 19702, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(19702, amount, typeOfEmission);
 		}
 		else if(typeOfEmission.equals("flightEmissions")) {
-			double limit = 11905 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 11905, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(11905, amount, typeOfEmission);
 		}
-		
 		else if(typeOfEmission.equals("carEmissions")) {
-			double limit = 10141 * 1.15;
-			if(amount >= limit) {
-				sendRecommendationMessage(typeOfEmission, 10141, amount);
-				return 1;
-			}
+			return sendRecommendationMessageWrapper(10141, amount, typeOfEmission);
 		}
 		return 0;
-
-		
+	}
+	
+	private int sendRecommendationMessageWrapper(double average, double amount, String typeOfEmission) {
+		double limit = average * 1.15; // 1.15 is a buffer
+		if(amount >= limit) {
+			sendRecommendationMessage(typeOfEmission, average, amount);
+			return 1;
+		}
+		return 0;
 	}
 
 	private void sendRecommendationMessage(String typeOfEmission, double average, double amount) {

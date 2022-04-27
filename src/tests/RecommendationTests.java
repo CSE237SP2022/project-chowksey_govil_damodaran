@@ -24,7 +24,7 @@ class RecommendationTests {
 	    StringBuilder sb = new StringBuilder();
 	    
 	    FileWriterAndReader fwr = new FileWriterAndReader();
-	    HashMap<String, Double> emissions = fwr.readFile("src/classes/beforecalcresults.txt");
+	    HashMap<String, Double> emissions = fwr.readFile("src/tests/beforecalcresults.txt");
 	    fwr.appendToFile(emissions, "src/classes/calculatorResults.txt");
 	}
 	
@@ -32,7 +32,7 @@ class RecommendationTests {
 	void checkIfRecommendationsAccurate() {
 		CarbonFootprintCalculatorRecommendations cfcr = new CarbonFootprintCalculatorRecommendations();
 		int counter = cfcr.getRecommendation();
-		assertEquals(counter,1);
+		assertEquals(counter,4);
 	}
 
 }
