@@ -5,8 +5,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.Duration;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class TrackerHelpers {
 	
@@ -106,7 +106,7 @@ public class TrackerHelpers {
 	}
 	
 	public int getDifferenceDate(LocalDate oldDate) {
-		return (int) ChronoUnit.DAYS.between(oldDate, LocalDate.now());
+		return (int) Duration.between(oldDate.atStartOfDay(), LocalDate.now().atStartOfDay()).toDays();
 	}
 
 }
