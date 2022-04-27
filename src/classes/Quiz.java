@@ -2,6 +2,11 @@ package classes;
 
 import java.util.Scanner;
 
+// Sources for quiz content:
+//https://climate.nasa.gov/climate_resources/16/quiz-global-warming/
+//https://climate.nasa.gov/climate_resources/21/quiz-carbon-dioxide/
+//https://www.theguardian.com/environment/2015/nov/25/the-hardest-climate-change-quiz-ever
+
 public class Quiz {
 	
 	TrackerHelpers th;
