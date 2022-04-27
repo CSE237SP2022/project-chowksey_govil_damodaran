@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class TrackerHelpers {
 	
@@ -16,20 +18,30 @@ public class TrackerHelpers {
 		
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		String line;
+		int difference = 0;
 		
 		while ((line = br.readLine()) != null) {
-			System.out.println(line);
+			String[] splitStr = line.trim().split("\\s+");
+			if (checkDate(line)) {
+				difference = getDifferenceDate(LocalDate.parse(splitStr[1])) + 1;
+				System.out.println("Here is your cumulative usage starting from: " + splitStr[1]);
+			} 
+			else {
+				System.out.println(line + ", Average Per Day: " + (Integer.valueOf(splitStr[1])/difference));	
+			}
 		}
+		System.out.println(" ");
 		br.close();
 		
 	}
 	
-	public void write(String fileName, int miles, int flight, int trash) throws Exception {
+	public void write(String fileName, int miles, int flight, int trash, LocalDate date) throws Exception {
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 		File trackerFile = new File(fileName);
 		trackerFile.createNewFile();
 		
+		writer.write("Date: " + date + "\n");
 		writer.write("Miles: " + miles + "\n");
 		writer.write("Flight: " + flight + "\n");
 		writer.write("Trash: " + trash + "\n");
@@ -63,6 +75,38 @@ public class TrackerHelpers {
 		
 		return variable;
 		
+	}
+	
+	public LocalDate parseTextDate(String fileName, String compString) throws Exception {
+		
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		String currentLine;
+		
+		while ((currentLine = reader.readLine()) != null) {
+			String[] splitStr = currentLine.trim().split("\\s+");
+			
+			if (splitStr[0].equals(compString)) {
+				reader.close();
+				return LocalDate.parse(splitStr[1]);
+			}
+		}
+	
+		reader.close();
+		return null;
+		
+	}
+	
+	public Boolean checkDate(String line) {
+		String[] splitStr = line.trim().split("\\s+");
+		
+		if (splitStr[0].equals("Date:")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int getDifferenceDate(LocalDate oldDate) {
+		return (int) ChronoUnit.DAYS.between(oldDate, LocalDate.now());
 	}
 
 }
